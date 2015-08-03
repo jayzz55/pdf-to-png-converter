@@ -1,0 +1,17 @@
+<div class="page-header"><h1>Upload Document</h1></div>
+ 
+<%= form_for @document do |f| %>
+  <%= render 'shared/errors', object: @document %>
+ 
+  <div class="form-group">
+    <%= f.label :title %>
+    <%= f.text_field :title, class: 'form-control' %>
+  </div>
+ 
+  <div class="form-group">
+    <%= f.label :pdf %>
+    <%= f.file_field :pdf, class: 'form-control'%>
+  </div>
+ 
+  <%= f.submit 'Upload', class: 'btn btn-primary' %>
+<% end %>
