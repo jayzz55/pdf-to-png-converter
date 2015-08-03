@@ -2,6 +2,8 @@ Rails.application.routes.draw do
 
   resources :documents, only: [:new, :create, :index, :destroy]
 
+  resources :pages
+
   root to: 'documents#index'
 
   # The priority is based upon order of creation: first created -> highest priority.

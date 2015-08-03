@@ -12,6 +12,15 @@ class Document < ActiveRecord::Base
 
   after_asset_post_process :make_pages
 
+  def destroy_attachments
+    self.pages.each do |item|
+      item.asset = nil
+      item.save
+    end
+    self.asset = nil
+    self.save
+  end
+
   private
 
   def make_pages

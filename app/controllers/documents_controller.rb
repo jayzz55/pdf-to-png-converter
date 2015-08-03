@@ -8,7 +8,7 @@ class DocumentsController < ApplicationController
   end
 
   def create
-    @document = Document.new(photo_params)
+    @document = Document.new(document_params) 
     if @document.save
       flash[:success] = "The document was added!"
       redirect_to root_path
@@ -17,10 +17,23 @@ class DocumentsController < ApplicationController
     end
   end
 
+  def destroy
+    document = Document.find(params[:id])
+    document.destroy_attachments
+    if document.destroy
+      flash[:success] = "document deleted"
+    else
+      flash[:danger] = "Unable to delete document"
+    end
+
+    redirect_to documents_path
+    
+  end
+
   private
 
-  def photo_params
-    params.require(:document).permit(:asset, :title)
+  def document_params
+    params.require(:document).permit(:asset, :title, :id)
   end
 
 end

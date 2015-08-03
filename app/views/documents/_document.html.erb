@@ -1,6 +1,9 @@
 <div class="media">
   <div class="media-left">
-    <%= link_to image_tag(document.asset.url(:thumb), class: 'media-object'), document.asset.url, target: '_blank' %>
+    <%= link_to image_tag(document.asset.url(:thumb), class: 'media-object'), pages_path(id: document.id) %>
+    <%= form_for(document, :html => { :method => :delete}) do |f| %>
+      <%= f.submit "delete" %>
+    <% end %>
   </div>
   <div class="media-body">
     <h4 class="media-heading"><%= document.title %></h4>
