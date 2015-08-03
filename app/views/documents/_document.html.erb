@@ -1,7 +1,6 @@
 <div class="media">
   <div class="media-left">
-    <%= link_to image_tag(document.pdf.url, class: 'media-object'), document.pdf.url, target: '_blank' %>
-    <%= link_to image_tag(document.pdf.url(:thumb), class: 'media-object'), document.pdf.url(:thumb) %>
+    <%= link_to image_tag(document.asset.url(:thumb), class: 'media-object'), document.asset.url, target: '_blank' %>
   </div>
   <div class="media-body">
     <h4 class="media-heading"><%= document.title %></h4>

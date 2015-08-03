@@ -20,7 +20,7 @@ class DocumentsController < ApplicationController
   private
 
   def photo_params
-    params.require(:document).permit(:pdf, :title)
+    params.require(:document).permit(:asset, :title)
   end
 
 end

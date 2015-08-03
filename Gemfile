@@ -18,6 +18,8 @@ gem 'bootstrap-sass',          '3.2.0.0'
 
 gem "paperclip", "~> 4.2"
 
+gem 'delayed_paperclip'
+
 gem 'delayed_job_active_record'
 
 # Use jquery as the JavaScript library
