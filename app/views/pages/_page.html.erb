@@ -1,5 +1,14 @@
-<div class="media">
-  <div class="media-left">
-    <%= link_to image_tag(page.asset.url, class: 'media-object'), page.asset.url %>
-  </div>
-</div>
+<!-- <div class="media"> -->
+<!--   <div class="media&#45;left"> -->
+<!--     <%= link_to image_tag(page.asset.url, class: 'media&#45;object'), page.asset.url %> -->
+<!--   </div> -->
+<!-- </div> -->
+
+
+  <figure itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
+    <a href=<%= page.asset.url %> itemprop="contentUrl" data-size="1024x1024">
+        <img src=<%= page.asset.url %> itemprop="thumbnail" alt="Image description" />
+    </a>
+                                        <figcaption itemprop="caption description">Image caption  1</figcaption>
+                                        
+  </figure>
