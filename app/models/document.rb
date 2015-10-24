@@ -25,9 +25,11 @@ class Document < ActiveRecord::Base
 
   def make_pages
     if valid?
-      Paperclip.run('convert', "-quality #{Page::QUALITY} -density #{Page::DENSITY} #{asset.queued_for_write[:original].path} #{asset.queued_for_write[:original].path}%d.png")
-      images = Dir.glob("#{asset.queued_for_write[:original].path}*.png").sort_by do |line|
-        line.match(/(\d+)\.png$/)[1].to_i
+      # Run ghostscript instead of ImageMagick to convert pdf to JPEG
+      Paperclip.run('gs', "-dNOPAUSE -dBATCH -sDEVICE=jpeg -r100 -dUseCIEColor -o #{asset.queued_for_write[:original].path}-%d.jpeg #{asset.queued_for_write[:original].path}")
+      # Paperclip.run('convert', "-quality #{Page::QUALITY} -density #{Page::DENSITY} #{asset.queued_for_write[:original].path} #{asset.queued_for_write[:original].path}%d.jpeg")
+      images = Dir.glob("#{asset.queued_for_write[:original].path}*.jpeg").sort_by do |line|
+        line.match(/(\d+)\.jpeg$/)[1].to_i
       end
 
       images.each do |page_image|
